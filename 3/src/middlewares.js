@@ -9,7 +9,12 @@ const logger = (store) => (next) => (action) => {
 
 const addDate = (store) => (next) => (action) => {
   // BEGIN (write your solution here)
+  if (action.type === 'TASK_ADD') {
+    let { task } = action.payload;
+    task.text = `Задача на ${new Date().toLocaleDateString('ru-RU')}: ${task.text}`;
+  }
 
+  return next(action)
   // END
 };
 
